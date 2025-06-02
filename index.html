@@ -52,19 +52,35 @@
         }
         .cart {
             position: fixed;
-            right: 20px;
-            top: 20px;
-            width: 300px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
             border: 1px solid #ddd;
             padding: 10px;
             background: white;
             z-index: 100;
-            max-height: 80vh;
+            max-height: 40vh;
             overflow-y: auto;
         }
         
         .menu-container {
-            margin-right: 340px;
+            margin-right: 0;
+            padding-bottom: 50vh;
+        }
+        
+        @media (min-width: 768px) {
+            .cart {
+                position: fixed;
+                right: 20px;
+                top: 20px;
+                width: 300px;
+                bottom: auto;
+            }
+            .menu-container {
+                margin-right: 340px;
+                padding-bottom: 0;
+            }
         }
     </style>
 </head>
