@@ -106,12 +106,22 @@ function updateCart() {
     // 计算总金额
     total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
     
-    // 更新购物车显示
-    cartItemsElement.innerHTML = cart.map(item => 
+    // 更新购物车显示，添加删除按钮
+    cartItemsElement.innerHTML = cart.map((item, index) => 
         `<div>
             <p>${item.name} x${item.quantity} - ${item.price * item.quantity}元</p>
+            <button class="delete-btn" data-index="${index}">×</button>
         </div>`
     ).join('');
+    
+    // 添加删除按钮事件监听
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const index = e.target.dataset.index;
+            cart.splice(index, 1);
+            updateCart();
+        });
+    });
     
     totalElement.textContent = total;
 }
